@@ -23,7 +23,7 @@ router.map({
     '/locations/:id/attendees': {
         component: Attendees
     },
-    '/schedule': {
+    '/locations/:location/attendees/:attendee/schedule': {
         component: Schedule
     }
 });

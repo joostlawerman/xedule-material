@@ -22,7 +22,7 @@
 		    <div>
 		        <item class="item"
 		            v-for="(id, attendee) in attendees"
-		            :link="'locations/'+ id +'/attendees'"
+		            :link="'/locations/'+$route.params.id+'/attendees/'+id+'/schedule'"
 		            :name="attendee">
 
 		        </item>

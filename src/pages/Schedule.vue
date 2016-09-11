@@ -9,6 +9,17 @@
     import Day from './components/Day'
 
     export default {
+        route: {
+            data (transition) {
+                return fetch(
+                    'https://devlopment.space/xedule/locations/'+transition.to.params.location+'/attendees/'+transition.to.params.attendee+'/weeks/37'
+                ).then(
+                    (res) => res.json()
+                ).then(
+                    (json) => ({ days: json })
+                )
+            }
+        },
         components: {
             Day
         },
@@ -16,12 +27,6 @@
             return {
                 days: {}
             }
-        },
-        created() {
-            fetch('https://devlopment.space/xedule/locations/130/attendees/52257/weeks/37')
-                .then((resp) => resp.json())
-                .then((json) => this.days = json)
-                .catch((e) => console.log(e))
         }
     }
 </script>
