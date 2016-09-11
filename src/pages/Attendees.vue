@@ -14,6 +14,7 @@
 
 <template>
 	<div>
+		<loader v-if="$loadingRouteData"></loader>
 		<div v-for="(group, attendees) in attendeeGroups">
 			<div class="subheader">
 				<span>{{{ group }}}</span>
@@ -33,20 +34,28 @@
 <script>
 
 import Item from './components/Item';
+import Loader from './components/Loader'
 
 export default {
+	route: {
+		data (transition) {
+			return fetch(
+				'https://devlopment.space/xedule/locations/'+transition.to.params.id+'/attendees'
+			).then(
+				(res) => res.json()
+			).then(
+				(json) => ({ attendeeGroups: json })
+			)
+		}
+	},
     data() {
         return {
             attendeeGroups: {}
         }
     },
     components: {
-        Item
-    },
-    created: function() {
-        fetch('https://devlopment.space/xedule/locations/'+this.$route.params.id+'/attendees')
-			.then((res) => res.json())
-			.then((json) => this.attendeeGroups = json)
+        Item,
+		Loader
     }
 }
 

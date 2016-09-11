@@ -1,15 +1,17 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-import List from './pages/List'
-import Schedule from './pages/Schedule'
-import Organisations from './pages/Organisations'
-import Locations from './pages/Locations'
-import Attendees from './pages/Attendees'
+import Schedule from './pages/Schedule';
+import Organisations from './pages/Organisations';
+import Locations from './pages/Locations';
+import Attendees from './pages/Attendees';
 
-const router = new VueRouter()
+const router = new VueRouter({
+    history: true,
+    hashbang: false
+})
 
 router.map({
     '/': {
@@ -21,14 +23,11 @@ router.map({
     '/locations/:id/attendees': {
         component: Attendees
     },
-    '/list': {
-        component: List
-    },
     '/schedule': {
         component: Schedule
     }
-})
+});
 
 import App from './App';
 
-router.start(App, '#app')
+router.start(App, '#app');
