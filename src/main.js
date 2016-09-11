@@ -8,10 +8,10 @@ import Organisations from './pages/Organisations';
 import Locations from './pages/Locations';
 import Attendees from './pages/Attendees';
 
-const router = new VueRouter({
+const router = new VueRouter(/*{
     history: true,
     hashbang: false
-})
+}*/)
 
 router.map({
     '/': {
