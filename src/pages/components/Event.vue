@@ -75,6 +75,8 @@
 	</div>
 </template>
 <script>
+	import moment from 'moment';
+
 	export default {
 		props: {
 			event: Object,
@@ -84,7 +86,8 @@
 		data() {
 			return {
 				color: '#6200EA',
-				icon: 'import_contacts'
+				icon: 'import_contacts',
+				time: {}
 			}
 		},
 		created() {
@@ -105,6 +108,17 @@
 
 			this.color = '#'+colors[Math.round(Math.random() * (colors.length - 1))];
 			this.icon = icons[Math.round(Math.random() * (icons.length - 1))];
+
+			const time = this.event.start.split(':')
+
+			this.time = moment(this.$parent.model.timestamp * 1000).subtract(1, 'd').add({
+				hours: time[0],
+				minutes: time[1]
+			})
+
+			if (this.time.isBefore(moment())) {
+				this.color = '#9E9E9E'
+			}
 		}
 	}
 </script>
