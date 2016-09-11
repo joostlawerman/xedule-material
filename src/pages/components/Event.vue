@@ -10,7 +10,6 @@
 
 			.start, .contents {
 				white-space: nowrap;
-				font-family: 'Roboto', sans-serif;
 			}
 			.start {
 				width: 100%;
@@ -24,7 +23,6 @@
 			}
 		}
 		.location {
-			font-family: 'Roboto', sans-serif;
 			color: rgba(0, 0, 0, 0.38);
 			position: absolute;
 			right: 16px;
@@ -109,7 +107,7 @@
 			this.color = '#'+colors[Math.round(Math.random() * (colors.length - 1))];
 			this.icon = icons[Math.round(Math.random() * (icons.length - 1))];
 
-			const time = this.event.start.split(':')
+			const time = this.event.end.split(':')
 
 			this.time = moment(this.$parent.model.timestamp * 1000).subtract(1, 'd').add({
 				hours: time[0],

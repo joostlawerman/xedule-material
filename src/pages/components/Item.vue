@@ -1,70 +1,64 @@
-<style scoped>
+<style lang="scss">
     .tree-item {
-        padding: 16px;
+        padding: 16px 0 16px;
         height: 24px;
-        font-size: 16px;
-        background-color: #455A64;
-        font-family: 'Roboto', sans-serif;
+        background-color: #78909C;
         color: #ffffff;
-        margin: 16px;
-        font-weight: bold;
-        width: 20%;
+        margin: 4px;
+        width: calc(20% - 8px);
         float: left;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+
+        span {
+            font-weight: bold;
+            line-height: 24px;
+            font-size: 16px;
+            padding: 0 16px 0 16px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 </style>
 
 
 <template>
-    <div>
-        <div class="tree-item" :class="{bold: open}"
-            @click="toggle">
-
-            {{{ model.name }}}
-
-            <!-- <span>[{{open ? '-' : '+'}}]</span> -->
-        </div>
-        <item
-            v-if="open"
-            lass="item"
-            v-for="model in model.children"
-            :model="model">
-
-        </item>
+    <div
+        class="tree-item"
+        v-link="link">
+        <span>{{{ name }}}</span>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'item',
+
         props: {
-            model: Object
-        },
-        data: function () {
-            return {
-                open: false
-            }
-        },
-        computed: {
-            isFolder: function () {
-                return this.model.children && this.model.children.length
-            }
-        },
-        methods: {
-            toggle: function () {
-                if (!this.open) {
-                    if (this.model.children < 1) {
-                        this.model.loadChildren();
-                    }
-
-                    this.open = true;
-
-                    return;
-                }
-                this.open = false;
-            }
+            name: String,
+            link: String
         }
+        // data: function () {
+        //     return {
+        //         open: false
+        //     }
+        // },
+        // computed: {
+        //     isFolder: function () {
+        //         return this.model.children && this.model.children.length
+        //     }
+        // },
+        //methods: {
+        //     toggle: function () {
+        //         if (!this.open) {
+        //             if (this.model.children < 1) {
+        //                 this.model.loadChildren();
+        //             }
+        //
+        //             this.open = true;
+        //
+        //             return;
+        //         }
+        //         this.open = false;
+        //     }
+        // }
     }
 </script>

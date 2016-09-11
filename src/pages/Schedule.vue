@@ -18,7 +18,7 @@
             }
         },
         created() {
-            fetch('https://devlopment.space/xedule/locations/130/attendees/52257/weeks/36')
+            fetch('https://devlopment.space/xedule/locations/130/attendees/52257/weeks/37')
                 .then((resp) => resp.json())
                 .then((json) => this.days = json)
                 .catch((e) => console.log(e))

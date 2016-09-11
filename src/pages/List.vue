@@ -1,11 +1,11 @@
 <template>
-    <ul id="demo">
+    <div>
         <item class="item"
             v-for="child in children"
             :model="child">
 
         </item>
-    </ul>
+    </div>
 </template>
 
 <script>
