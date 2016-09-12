@@ -9,14 +9,19 @@
         float: left;
         cursor: pointer;
 
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media only screen and (max-width: 768px) {
+            width: 100%;
+        }
+
         span {
             font-weight: bold;
             line-height: 24px;
             font-size: 16px;
             padding: 0 16px 0 16px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
     }
 </style>

@@ -35,6 +35,10 @@
 
             font-size: 18px;
             line-height: 64px;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .back {
             float: left;
@@ -54,9 +58,9 @@
     .page {
         padding: 64px 0 0 0;
 
-        @media only screen and (max-width: 768px) {
-            padding: 64px 0 0 0;
-        }
+        // @media only screen and (max-width: 768px) {
+        //     padding: 64px 0 0 0;
+        // }
     }
 </style>
 <template>
